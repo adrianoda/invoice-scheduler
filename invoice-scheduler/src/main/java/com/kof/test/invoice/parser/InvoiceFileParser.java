@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.kof.test.invoice.domain.InvoiceModel;
 import com.kof.test.invoice.domain.PaymentMode;
@@ -91,6 +93,13 @@ public class InvoiceFileParser {
 	 * @throws InvoiceFileParseException
 	 */
 	private Calendar parseDate(String invoiceDate) throws InvoiceFileParseException {
+
+		Pattern p = Pattern.compile("[\\d]{1,2}/[\\d]{1,2}/[\\d]{4}");
+		Matcher m = p.matcher(invoiceDate);
+		if (!m.matches()) {
+			throw new InvoiceFileParseException("Specified date is not valid [" + invoiceDate + "], expected date format is dd/MM/yyyy");
+		}
+
 		Calendar invD;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try {
