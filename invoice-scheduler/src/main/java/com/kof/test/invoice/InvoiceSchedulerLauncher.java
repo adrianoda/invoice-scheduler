@@ -19,7 +19,7 @@ public class InvoiceSchedulerLauncher {
 		if (args.length < 1) {
 			System.out.println("At least input file name must be specified as input parameter...");
 			return;
-		}
+		} 
 		String inputFileName = args[0];
 		
 		String outputFileName = null;
