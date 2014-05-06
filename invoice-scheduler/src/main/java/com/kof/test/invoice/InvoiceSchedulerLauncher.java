@@ -25,6 +25,8 @@ public class InvoiceSchedulerLauncher {
 		String outputFileName = null;
 		if (args.length == 2) {
 			outputFileName = args[1];
+		} else {
+			outputFileName = inputFileName + ".out";
 		}
 
 		// Scheduler execution

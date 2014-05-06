@@ -21,6 +21,7 @@ public class ExpirationDateCalculatorImpl implements ExpirationDateCalculator {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Calendar calculate(Calendar invoiceDate, PaymentMode paymentMode) {
 		Calendar expirationDate = (Calendar) invoiceDate.clone();
 		switch (paymentMode) {

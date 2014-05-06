@@ -14,14 +14,6 @@ public interface InvoiceScheduler {
 	/**
 	 * Execute invoice scheduled
 	 * @param inputFileName input file
-	 * @throws InvoiceFileParseException
-	 * @throws InvoiceFileWriterException
-	 */
-	public void execute(String inputFileName) throws InvoiceFileParseException, InvoiceFileWriterException;
-
-	/**
-	 * Execute invoice scheduled
-	 * @param inputFileName input file
 	 * @param outputFileName output file
 	 * @throws InvoiceFileParseException
 	 * @throws InvoiceFileWriterException

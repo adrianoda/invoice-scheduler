@@ -50,19 +50,19 @@ public class InvoiceSchedulerImpl implements InvoiceScheduler, InvoiceHandler {
 		this.fileParser = new InvoiceFileParser();
 	}
 
-	public void execute(String inputFileName) throws InvoiceFileParseException, InvoiceFileWriterException {
-		execute(inputFileName, null);
-	}
-
+	@Override
 	public void execute(String inputFileName, String outputFileName) throws InvoiceFileParseException, InvoiceFileWriterException {
-		// Set default output file name if not provided
-		this.outputFileName = outputFileName != null ? outputFileName : inputFileName + ".out";
+		if(inputFileName == null || outputFileName == null) {
+			throw new IllegalArgumentException("Both input file name ad output file name must be specified as input parameter");
+		}
+		this.outputFileName = outputFileName;
 		fileParser.parse(inputFileName, this);
 	}
 
 	/**
 	 * Handle invoice read from file. Also calculates expiration date.
 	 */
+	@Override
 	public void handle(InvoiceModel model) {
 		Calendar expirationDate = expDateCalc.calculate(model.getInvoiceDate(), model.getPaymentMode());
 		model.setExpirationDate(expirationDate);
@@ -72,6 +72,7 @@ public class InvoiceSchedulerImpl implements InvoiceScheduler, InvoiceHandler {
 	/**
 	 * Sort handled invoices and write output file
 	 */
+	@Override
 	public void close() throws InvoiceFileWriterException {
 		Collections.sort(invoices, new InvoiceModelComparator());
 		try {
