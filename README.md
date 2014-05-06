@@ -4,7 +4,7 @@ invoice-scheduler
 Simple program that provides to:
 
 <ul>
-  <li>Read invoice input parameter file (see in-invoice.txt, formatted as below:
+  <li>Read invoice input parameter file (see in-file-example.txt, formatted as below:
     <br>
     invoiceId; invoiceDate; paymentMode
   </li>
@@ -16,7 +16,7 @@ Simple program that provides to:
     </ul>
   </li>
   <li>Sort invoices by expiration date ascending</li>
-  <li>Write invoice output file (see out-invoice.txt), formatted as below:
+  <li>Write invoice output file (see out-file-example.txt), formatted as below:
     <br>
     invoiceId; invoiceDate; expirationDate
   </li>
