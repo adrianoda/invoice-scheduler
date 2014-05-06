@@ -21,3 +21,9 @@ Simple program that provides to:
     invoiceId; invoiceDate; expirationDate
   </li>
 </ul>
+
+To execute program run:
+
+<code>java -classpath invoice-scheduler-0.0.1-SNAPSHOT.jar com.kof.test.invoice.InvoiceSchedulerLauncher [inputFileName] [outputFileName]</code>
+
+If outputFileName is not provided then default file name is created ([inputFileName].out).
